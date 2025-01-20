@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 
 enum Genero { Masculino, Feminino, Outro }
 
-void main() {
-  runApp(Cadastro());
-}
-
 class Cadastro extends StatefulWidget {
   const Cadastro({super.key});
 
@@ -25,9 +21,13 @@ class _CadastroState extends State<Cadastro> {
       home: Scaffold(
         appBar: AppBar(
           title: Center(
-            child: Text('Cadastro'),
+            child: Text(
+              'Cadastro',
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
           ),
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.green,
         ),
         body: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -36,16 +36,35 @@ class _CadastroState extends State<Cadastro> {
             children: [
               Text(
                 'Insira seus dados',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, color: Colors.green),
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'E-mail'),
+                decoration: InputDecoration(
+                    labelText: 'E-mail',
+                    labelStyle: TextStyle(color: Colors.green),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                    )),
+                cursorColor: Colors.green,
                 onChanged: (text) {
                   email = text;
                 },
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Senha'),
+                decoration: InputDecoration(
+                  labelText: 'Senha',
+                  labelStyle: TextStyle(color: Colors.green),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green),
+                  ),
+                ),
+                cursorColor: Colors.green,
                 obscureText: true,
                 onChanged: (text) {
                   email = text;
@@ -56,6 +75,7 @@ class _CadastroState extends State<Cadastro> {
                   Radio(
                       value: Genero.Masculino,
                       groupValue: genero,
+                      activeColor: Colors.green,
                       onChanged: (generoEscolhido) {
                         setState(() {
                           genero = generoEscolhido!;
@@ -65,6 +85,7 @@ class _CadastroState extends State<Cadastro> {
                   Radio(
                       value: Genero.Feminino,
                       groupValue: genero,
+                      activeColor: Colors.green,
                       onChanged: (generoEscolhido) {
                         setState(() {
                           genero = generoEscolhido!;
@@ -74,6 +95,7 @@ class _CadastroState extends State<Cadastro> {
                   Radio(
                       value: Genero.Outro,
                       groupValue: genero,
+                      activeColor: Colors.green,
                       onChanged: (generoEscolhido) {
                         setState(() {
                           genero = generoEscolhido!;
@@ -86,6 +108,7 @@ class _CadastroState extends State<Cadastro> {
                 children: [
                   Checkbox(
                       value: aceitoTermos,
+                      activeColor: Colors.green,
                       onChanged: (check) {
                         setState(() {
                           aceitoTermos = check!;
@@ -96,19 +119,19 @@ class _CadastroState extends State<Cadastro> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  if (email.contains('@')) {
-                    print('E-mail válido');
-                    Navigator.pushNamed(context, '/produtos');
+                  if (email.contains('@') || senha.length < 7) {
+                    print('E-mail válido ou senha inválidos');
+                    Navigator.pushNamed(context, '/listaProdutos');
                   } else {
                     print('E-mail inválido');
                   }
                 },
                 child: Text(
                   'Entrar',
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
+                    backgroundColor: Colors.green,
                     padding: EdgeInsets.fromLTRB(100, 20, 100, 20)),
               )
             ],

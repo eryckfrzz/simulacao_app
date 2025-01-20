@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:simulacao_app/cadastro.dart';
-import 'package:simulacao_app/produtos.dart';
+import 'package:simulacao_app/detalhes_produtos.dart';
+import 'package:simulacao_app/listar_produtos.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
 }
 
@@ -11,9 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(initialRoute: '/', routes: {
-      '/': (context) => Cadastro(),
-      '/produtos': (context) => Produtos()
-    },);
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Cadastro(),
+        '/listaProdutos': (context) => Listarprodutos(),
+      },
+    );
   }
 }
